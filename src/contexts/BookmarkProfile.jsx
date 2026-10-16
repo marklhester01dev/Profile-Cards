@@ -13,8 +13,10 @@ const BookmarkProvider = ({ children }) => {
   });
 
   useEffect(() => {
+    console.log('bookmark changed:', bookmark);
     localStorage.setItem('bookmark', JSON.stringify(bookmark));
   }, [bookmark]);
+  // useEffect always runs automatically after the first render has finished rendering
 
   // add if not already there, remove if it is
   const toggleBookmark = (profile) => {
