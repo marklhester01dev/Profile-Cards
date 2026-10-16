@@ -7,10 +7,23 @@ import {
 import profile from '../assets/shikiro.jpg';
 import Button from './Button';
 import Stats from './Stats';
+import { useBookmarkState } from '../contexts/BookmarkProfile';
 
 function ProfileCard() {
+  const { toggleBookmark, isBookmarked } = useBookmarkState();
+
+  const profileData = {
+    id: 1,
+    name: 'Kageyoshi Kiro',
+    price: '$40/hr',
+    rating: '4.2',
+    projectQuantity: 80,
+  };
+
+  const saved = isBookmarked(profileData.id);
+
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center" data-profile-id="1">
       {/* Frame: the outer border around the card */}
       <div className="max-w-xs rounded-4xl bg-black/90 p-3">
         {/* Card: relative so the overlay can be positioned inside it,
@@ -20,7 +33,7 @@ function ProfileCard() {
           <img
             src={profile}
             alt="Profile Image"
-            fetchpriority="low"
+            fetchPriority="low"
             loading="lazy"
             decoding="async"
             className="aspect-9/16 w-full object-cover object-right"
@@ -32,12 +45,12 @@ function ProfileCard() {
             <div className="flex flex-col gap-1">
               <div className="flex items-center gap-2">
                 <p className="text-xl font-semibold text-white">
-                  Kageyoshi Kiro
+                  {profileData.name}
                 </p>
                 <SealCheckIcon size={20} weight="fill" color="#3B82F6" />
               </div>
               <p className="text-xs leading-relaxed text-white/80">
-                May the shine of the sun and the scent of flowers never fades.
+                May the warmth of the sun and the scent of flowers never fades.
               </p>
             </div>
 
@@ -53,7 +66,7 @@ function ProfileCard() {
                   divisionClasses="flex flex-row items-center justify-center gap-1"
                   className="text-lg font-semibold text-white"
                 >
-                  4.2
+                  {profileData.rating}
                 </Stats>
                 <Stats divisionClasses="" className="text-xs text-white/70">
                   Rating
@@ -68,7 +81,7 @@ function ProfileCard() {
                   divisionClasses=""
                   className="text-lg font-semibold text-white"
                 >
-                  80
+                  {profileData.projectQuantity}
                 </Stats>
                 <Stats divisionClasses="" className="text-xs text-white/70">
                   Projects
@@ -83,7 +96,7 @@ function ProfileCard() {
                   divisionClasses=""
                   className="text-lg font-semibold text-white"
                 >
-                  $40/hr
+                  {profileData.price}
                 </Stats>
                 <Stats divisionClasses="" className="text-xs text-white/70">
                   Price
@@ -107,10 +120,10 @@ function ProfileCard() {
               <Button
                 icon={BookmarkSimpleIcon}
                 iconSize={22}
-                iconWeight="regular"
+                iconWeight={saved ? 'fill' : 'regular'}
                 aria-label="Bookmark profile"
                 className="cursor-pointer rounded-full border border-white/20 bg-white/10 p-3 text-white backdrop-blur-md transition-all duration-150 hover:bg-white/50"
-                onClick={() => console.log('Bookmark clicked')}
+                onClick={() => toggleBookmark(profileData)}
               />
             </div>
           </section>
