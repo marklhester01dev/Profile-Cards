@@ -1,7 +1,6 @@
-import ProfileCard from './components/ProfileCard';
-
+import Home from './pages/Home';
 function App() {
-  return <ProfileCard />;
+  return <Home />;
 }
 
 export default App;

@@ -32,13 +32,12 @@ function ProfileCard() {
             <div className="flex flex-col gap-1">
               <div className="flex items-center gap-2">
                 <p className="text-xl font-semibold text-white">
-                  Juan Dela Cruz
+                  Kageyoshi Kiro
                 </p>
                 <SealCheckIcon size={20} weight="fill" color="#3B82F6" />
               </div>
               <p className="text-xs leading-relaxed text-white/80">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum,
-                aperiam.
+                May the shine of the sun and the scent of flowers never fades.
               </p>
             </div>
 
@@ -98,7 +97,7 @@ function ProfileCard() {
                 icon={EnvelopeSimpleIcon}
                 iconSize={20}
                 iconWeight="regular"
-                className="flex flex-1 flex-row items-center justify-center gap-2 rounded-full bg-white px-6 py-3 font-medium text-black"
+                className="flex flex-1 cursor-pointer flex-row items-center justify-center gap-2 rounded-full bg-white px-6 py-3 font-medium text-black transition-all duration-150 hover:bg-white/80"
                 onClick={() => console.log('Contact clicked')}
               >
                 Get In Touch
@@ -110,7 +109,7 @@ function ProfileCard() {
                 iconSize={22}
                 iconWeight="regular"
                 aria-label="Bookmark profile"
-                className="rounded-full border border-white/20 bg-white/10 p-3 text-white backdrop-blur-md"
+                className="cursor-pointer rounded-full border border-white/20 bg-white/10 p-3 text-white backdrop-blur-md transition-all duration-150 hover:bg-white/50"
                 onClick={() => console.log('Bookmark clicked')}
               />
             </div>
